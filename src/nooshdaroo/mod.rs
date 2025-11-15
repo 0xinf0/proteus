@@ -3,18 +3,31 @@
 //! Nooshdaroo extends Proteus with dynamic protocol emulation and shape-shifting
 //! capabilities, allowing encrypted SOCKS proxy traffic to masquerade as any of
 //! 100+ defined network protocols.
+//!
+//! ## Features
+//! - Multiple proxy types: SOCKS5, HTTP CONNECT, Transparent
+//! - Socat-like bidirectional relay
+//! - Mobile-friendly API (iOS/Android FFI bindings)
+//! - Protocol shape-shifting with 5 strategies
+//! - Traffic shaping and timing emulation
 
 pub mod config;
 pub mod library;
+pub mod mobile;
 pub mod protocol;
+pub mod proxy;
 pub mod shapeshift;
+pub mod socat;
 pub mod strategy;
 pub mod traffic;
 
 pub use config::{NooshdarooConfig, ShapeShiftConfig, TrafficShapingConfig};
 pub use library::ProtocolLibrary;
+pub use mobile::{MobileConfigBuilder, NooshdarooMobileConfig};
 pub use protocol::{DetectionScore, ProtocolId, ProtocolMeta, Transport};
+pub use proxy::{HttpProxyServer, ProxyType, UnifiedProxyListener};
 pub use shapeshift::ShapeShiftController;
+pub use socat::{RelayMode, SocatBuilder, SocatRelay};
 pub use strategy::{ShapeShiftStrategy, StrategyType};
 
 use std::sync::Arc;
