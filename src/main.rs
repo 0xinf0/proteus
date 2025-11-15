@@ -23,6 +23,7 @@ use crate::{
 mod crypto;
 mod lang;
 mod net;
+mod nooshdaroo;
 mod pt;
 
 #[tokio::main]
